@@ -5,10 +5,10 @@ def escolha_palavra_secreta
 	texto = File.read("dicionario.txt")
 	todas_as_palavras = texto.split("\n")
 	numero_escolhido = rand(todas_as_palavras.size)
-	palavra_secreta = todas_as_palavras[numero_escolhido]
+	palavra_secreta = todas_as_palavras[numero_escolhido].downcase
 	avisa_palavra_escolhida palavra_secreta
 end
-
+	
 def palavra_mascarada(chutes, palavra)
 	mascara = ""
 	for letra in palavra.chars
