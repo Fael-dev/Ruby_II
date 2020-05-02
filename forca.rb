@@ -1,7 +1,28 @@
 require_relative 'ui'
  
-def pede_um_chute_valido chutes, erros
-	cabecalho_de_tentativa erros, chutes
+def escolha_palavra_secreta
+	avisa_escolhendo_palavra
+	texto = File.read("dicionario.txt")
+	todas_as_palavras = texto.split("\n")
+	numero_escolhido = rand(todas_as_palavras.size)
+	palavra_secreta = todas_as_palavras[numero_escolhido]
+	avisa_palavra_escolhida palavra_secreta
+end
+
+def palavra_mascarada(chutes, palavra)
+	mascara = ""
+	for letra in palavra.chars
+		if chutes.include? letra
+			mascara << letra
+		else
+			mascara << "_"
+		end
+	end
+	mascara
+end
+
+def pede_um_chute_valido chutes, erros, mascara
+	cabecalho_de_tentativa erros, chutes, mascara
 	loop do
 		chute  = pede_um_chute
 		if chutes.include? chute
@@ -20,7 +41,8 @@ def joga(nome)
 	pontos_ate_agr = 0
 
 	while erros < 5
-		chute = pede_um_chute_valido chutes, erros
+		mascara = palavra_mascarada chutes, palavra_secreta
+		chute = pede_um_chute_valido chutes, erros, mascara
 		chutes << chute
 
 		chutou_uma_letra = chute.size == 1

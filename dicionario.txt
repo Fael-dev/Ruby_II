@@ -1,0 +1,12 @@
+software
+hardware
+programacao
+python
+java
+javascript
+ruby
+flutter
+react
+angular
+vue
+electron

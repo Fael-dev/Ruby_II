@@ -7,23 +7,17 @@ def boas_vindas
 	nome
 end
 
-def escolha_palavra_secreta
-	puts "Escolhendo a palavra secreta..."
-	palavra_secreta = "programador"
-	puts "Palavra secreta com #{ palavra_secreta.size } letras... Boa sorte!"
-	palavra_secreta
-end
-
 def nao_quer_jogar?
 	puts "Deseja jogar novamente?(S/N)"
 	quero_jogar = gets.strip
 	nao_quero_jogar = quero_jogar.upcase == "N"
 end
 
-def cabecalho_de_tentativa(erros, chutes)
+def cabecalho_de_tentativa(erros, chutes, mascara)
 	puts "\n\n\n\n"
 	puts "Total de erros:#{erros}"
 	puts "Chutes até agora:#{ chutes } "
+	puts "Palavra secreta: #{mascara}"
 end
 
 def pede_um_chute
@@ -55,4 +49,13 @@ end
 
 def avisa_pontos pontos
 	puts "Você ganhou #{ pontos } pontos."
+end
+
+def avisa_escolhendo_palavra
+	puts "Escolhendo a palavra secreta..."
+end
+
+def avisa_palavra_escolhida(palavra_secreta)
+	puts "Palavra secreta com #{ palavra_secreta.size } letras... Boa sorte!"
+	palavra_secreta
 end
